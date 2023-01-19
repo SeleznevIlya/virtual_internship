@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'VI_app',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -81,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'VI_db',
-        'USER': os.getenv('POSTGRESQL_LOGIN'),
-        'PASSWORD': os.getenv('POSTGRESQL_PASSWORD'),
+        'USER': os.getenv('FSTR_DB_LOGIN'),
+        'PASSWORD': os.getenv('FSTR_DB_PASS'),
         'HOST': 'localhost',
         'PORT': '5432',
     },
