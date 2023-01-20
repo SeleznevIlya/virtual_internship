@@ -16,20 +16,20 @@ class PerevalAPIView(APIView):
     def post(self, request):
         serializer = PerevalSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
-        pereval_new = PerevalAdded.objects.create(
-            author_id=request.data['author_id'],
-            beauty_title=request.data['beauty_title'],
-            title=request.data['title'],
-            other_title=request.data['other_title'],
-            coord_id=request.data['coord_id'],
-            areas_id=request.data['areas_id'],
-            winter_level_id=request.data['winter_level_id'],
-            spring_level_id=request.data['spring_level_id'],
-            summer_level_id=request.data['summer_level_id'],
-            autumn_level_id=request.data['autumn_level_id'],
-        )
-        return Response({'pereval': PerevalSerializer(pereval_new).data})
+        serializer.save()
+        # pereval_new = PerevalAdded.objects.create(
+        #     author_id=request.data['author_id'],
+        #     beauty_title=request.data['beauty_title'],
+        #     title=request.data['title'],
+        #     other_title=request.data['other_title'],
+        #     coord_id=request.data['coord_id'],
+        #     areas_id=request.data['areas_id'],
+        #     winter_level_id=request.data['winter_level_id'],
+        #     spring_level_id=request.data['spring_level_id'],
+        #     summer_level_id=request.data['summer_level_id'],
+        #     autumn_level_id=request.data['autumn_level_id'],
+        # )
+        return Response({'pereval': serializer.data})
 
 
 # class PerevalAPIView(generics.ListAPIView):

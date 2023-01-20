@@ -18,3 +18,12 @@ class PerevalSerializer(serializers.Serializer):
     status = serializers.CharField(read_only=True)
     areas_id = serializers.IntegerField()
     #activities_types = serializers.IntegerField()
+
+    def create(self, validated_data):
+        return PerevalAdded.objects.create(**validated_data)
+
+
+
+
+
+
