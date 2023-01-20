@@ -17,18 +17,21 @@ class PerevalAPIView(APIView):
         serializer = PerevalSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        # pereval_new = PerevalAdded.objects.create(
-        #     author_id=request.data['author_id'],
-        #     beauty_title=request.data['beauty_title'],
-        #     title=request.data['title'],
-        #     other_title=request.data['other_title'],
-        #     coord_id=request.data['coord_id'],
-        #     areas_id=request.data['areas_id'],
-        #     winter_level_id=request.data['winter_level_id'],
-        #     spring_level_id=request.data['spring_level_id'],
-        #     summer_level_id=request.data['summer_level_id'],
-        #     autumn_level_id=request.data['autumn_level_id'],
-        # )
+        return Response({'pereval': serializer.data})
+
+    def put(self, request, *args, **kwargs):
+        pk = kwargs.get("pk", None)
+        if not pk:
+            return Response({'error': "Method PUT not allowed"})
+
+        try:
+            instance = PerevalAdded.objects.get(pk=pk)
+        except:
+            return Response({'error': "Object does not exist"})
+
+        serializer = PerevalSerializer(data=request.data, instance=instance)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response({'pereval': serializer.data})
 
 

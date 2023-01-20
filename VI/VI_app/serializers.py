@@ -22,8 +22,17 @@ class PerevalSerializer(serializers.Serializer):
     def create(self, validated_data):
         return PerevalAdded.objects.create(**validated_data)
 
+    def update(self, instance, validated_data):
+        instance.beauty_title = validated_data.get('beauty_title', instance.beauty_title)
+        instance.title = validated_data.get('title', instance.title)
+        instance.other_title = validated_data.get('other_title', instance.other_title)
+        instance.coord_id = validated_data.get('coord_id', instance.coord_id)
+        instance.winter_level_id = validated_data.get('winter_level_id', instance.winter_level_id)
+        instance.spring_level_id = validated_data.get('spring_level_id', instance.spring_level_id)
+        instance.summer_level_id = validated_data.get('summer_level_id', instance.summer_level_id)
+        instance.autumn_level_id = validated_data.get('autumn_level_id', instance.autumn_level_id)
+        instance.status = validated_data.get('status', instance.status)
+        instance.areas_id = validated_data.get('areas_id', instance.areas_id)
 
-
-
-
-
+        instance.save()
+        return instance

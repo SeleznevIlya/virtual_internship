@@ -20,5 +20,6 @@ from VI_app.views import PerevalAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/perevalList/', PerevalAPIView.as_view())
+    path('api/v1/perevalList/', PerevalAPIView.as_view()),
+    path('api/v1/perevalList/<int:pk>/', PerevalAPIView.as_view()),
 ]
