@@ -1,0 +1,12 @@
+{   "author_id": 1,
+    "beauty_title": "test",
+    "title": "test",
+    "other_title": "test",
+    "areas_id": 1,
+    "coord_id": 2,
+    "winter_level_id": 1,
+    "spring_level_id": 1,
+    "summer_level_id": 1,
+    "autumn_level_id": 1
+
+}
