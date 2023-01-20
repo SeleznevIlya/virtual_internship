@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from VI_app.views import PerevalAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/perevalList/', PerevalAPIView.as_view())
 ]
